@@ -1,0 +1,2 @@
+# ExercisesJS
+Exercises solved
