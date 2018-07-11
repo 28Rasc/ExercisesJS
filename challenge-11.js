@@ -25,7 +25,7 @@
         name: 'Raul',
         age: 25,
         weight: '68',
-        birthday: 'Outubro'
+        birthday: '16/10'
     }
 
     /*
@@ -43,20 +43,24 @@
         console.log( 'The '+ cont +' of person is '+ person[ cont ] +'' );
         counter++;
     }
-    console.log( counter );
+    console.log('The person has '+  counter +' properties');
 
     /*
-    Crie uma função chamada `moreThan`, que vai verificar se a pessoa (objeto
-    criado acima) é mais velha que a idade passada por parâmetro.
+    Crie uma função chamada `moreThan`, (que vai verificar se a pessoa (objeto
+    criado acima) é mais velha que a idade passada por parâmetro).
     Se verdadeiro, retornar `true`. Senão, retornar false.
     Após a função, mostrar a mensagem no console:
     'The person has more than 25 years old? [TRUE/FALSE]'
     */
+    
     function moreThan( idade ) {
-        var isAge = idade > person.age ? true : false
+        var isAge =  person.age > idade ? true : false
         return isAge;
     }
-    console.log( 'The person has more than 25 years old? '+ moreThan(26) );
+    console.log( 'The person has more than 25 years old? '+ moreThan(24) );
+
+    
+    
 
     /*
     Faça um loop de 0 a 20, que adicione cada número como um item de um
@@ -71,7 +75,7 @@
         if( i > 10 ){
             break;
         }
-        numbers += i;
+        numbers.push( i );
     }
     console.log( numbers );
     
@@ -91,7 +95,7 @@
         if( i % 2 !== 0 ) {
             continue;
         }
-        numbers += i;
+        numbers.push( i );
     }
     console.log( numbers );
 
