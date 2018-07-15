@@ -134,7 +134,7 @@
     console.log( '\nTodos os estados de `brasil` tem mais de 7 letras?' );
     
     var isSeven = brasil.every( function( item ) {
-        return item.length < 8;
+        return item.length > 7;
     
     } );
     console.log( isSeven ? 'Sim, todos os estados tem mais de 7 letras!' : 'Nem todos os estados tem mais de 7 letras!');
@@ -161,8 +161,11 @@
     - "[ESTADO] pertence ao Brasil."
     Atribua o novo array a uma variável chamada `map`.
     */
-    var map = newBrasil.map(function( item, index ){
-            return  { id : index + 1, estado : item.estado + ' pertence ao Brasil.' } ;
+    var map = newBrasil.map(function( item ){
+            return  { 
+                id : item.id + 1,
+                estado : item.estado + ' pertence ao Brasil.' 
+            };
     } );
 
     /*
@@ -175,8 +178,8 @@
     Filtre o array criado acima, retornando somente os estados que tiverem
     ID par. Atribua o valor à uma variável chamada `filter`.
     */
-    var filter = map.filter(function( item, index){
-        return index % 2;
+    var filter = map.filter(function( item ){
+        return item.id % 2  === 0;
     });
 
     /*
