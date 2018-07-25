@@ -1,5 +1,5 @@
 (function() {
-    'use strinct';
+    'use strict';
     /*
     1. Envolva todo o conteúdo desse desafio em uma IIFE.
     2. Adicione a diretiva 'use strict';
@@ -19,8 +19,8 @@
 
     var name = 'Raul';
 
-    for(var i = 0, j = 1; i < name.length; i++, j++){
-        console.log( name.charAt( i ) + ' é a ' + j + 'ª letra do meu nome.');
+    for( var i = 0, len = name.length; i < len; i++ ){
+        console.log( name.charAt( i ) + ' é a ' +  ( i + 1 ) + 'ª letra do meu nome.' );
     }
 
 
@@ -60,9 +60,13 @@
     console.log( '\nMeus amigos:' );
 
     var myArray = [ 'Maria', 'josé', 'jesus', 'Dênis', 'Mike' ];
-    var newArray = ' e ' + myArray.pop();
+    var phrase = myArray.reduce( function( total, atual, index ) {
+        var separator = myArray.length - 1 === index ? ' e ' : ', ';
+        return total + separator + atual;
+        
+    } ).concat(' são meus amigos.');
 
-    console.log( myArray.join( ', ' ) + newArray +' são meus amigos.' );
+    console.log( phrase );
 
     /*
     Usando o replace(), faça a string "Roberto" virar "Roberta".
@@ -72,9 +76,7 @@
 
     var name = 'Roberto';
 
-
-
-    console.log( name.slice( 0, 6 ) + name.charAt( 6 ).replace( 'o', 'a' ) );
+    console.log( name.replace( 'to', 'ta' ) );
 
     /*
     Mostre no console a parte "nando" da string "Fernando". Use o método que
@@ -84,7 +86,7 @@
 
     var ferName = 'Fernando';
 
-    console.log( ferName.slice( 3 ) );
+    console.log( ferName.substring( 8, 3 ) );
 
     /*
     Declare uma variável chamada `myName`, que receba o seu primeiro nome,
@@ -97,7 +99,7 @@
     */
     console.log( '\nNome com letras intercaladas entre caixa alta e baixa:' );
 
-    var myName = 'Raul Cavalcanti';
+    var myName = 'Raul';
 
     var newName = myName.split( '' ).map( function( item, index ) {
     return index % 2 === 0 ? item.toUpperCase() : item.toLowerCase();
