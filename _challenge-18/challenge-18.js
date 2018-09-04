@@ -19,20 +19,22 @@
     - "101.123-131x32"
     */
     console.log( 'Limpando CPFs:' );
+
+    var useCpfs =   ['049-214 3421-1',
+                    '210.458.522-05',
+                    '735 500 794 - 22',
+                    '101.123-131x32'];
     
     function cleanCPF( cpf ) {
-       return cpf.replace( /[\W\x]/g, '' );
+       return cpf.replace( /\D/g, '' );
     }
-    var useCpf1 = '049-214 3421-1';
-    var useCpf2 = '210.458.522-05';
-    var useCpf3 = '735 500 794 - 22';
-    var useCpf4 = '101.123-131x32';
 
 
-    console.log( cleanCPF( useCpf1 ) );
-    console.log( cleanCPF( useCpf2 ) );
-    console.log( cleanCPF( useCpf3 ) );
-    console.log( cleanCPF( useCpf4 ) );
+    useCpfs.forEach( function( cpf ) {
+
+        console.log( cleanCPF( cpf ) );
+        
+    });
 
     /*
     Usando os CPFs limpos acima, deixe-os com a formatação correta de CPF.
@@ -41,13 +43,10 @@
     */
     console.log( '\nFormatando CPFs corretamente:' );
 
-    let fixCPF = cleanCPF( useCpf2 ).replace( /(\d\d\d)(\d\d\d)(\d\d\d)(\d\d)/ , function( regex, cap1, cap2, cap3, cap4 ) {
-        return cap1 + '.' +cap2 +'.'+ cap3 + '-'+ cap4;
-    });
-   
-    console.log( fixCPF );
-
-
+    useCpfs.forEach( function( cpf ) {
+        console.log( cleanCPF( cpf ).replace( /(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4' ));
+    } );
+        
     /*
     Crie uma expressão regular que faça match com as palavras "junho" ou "julho",
     usando o mínimo de caracteres possíveis na regex.
@@ -120,10 +119,10 @@
     console.log( '\nFazer replace dos textos das tags:' );
    
     var text = '<h1>Título da página</h1> <p>Este é um parágrafo</p> <footer>Rodapé</footer>';
-    var newText;
-    newText = text.replace(/(<(\w+)>)(\w+[^<]+)(<\/\w+>)/g, function( regex, openTag, tagName, text, closeTag) {
-        return openTag +'O texto dentro da tag "'+ tagName +'" é "'+ text+'"'+ closeTag;
-    }).replace( /(> )/g, ' > \n ' );
+    
+    var newText = text.replace(
+        /(<(\w+)>)([^<]+)(<\/\w+>)/g, 
+        ' $1 O texto dentro da tag "$2" é $3 $4 \n' );
 
 
     console.log( newText );
