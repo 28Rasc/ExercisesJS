@@ -21,8 +21,7 @@
 
     if(!username)
         username = 'Desconhecido';
-
-        alert('Bem vindo ' + username);
+    alert('Bem vindo ' + username);
 
     /*
     Agora, pergunte ao usuário "Qual o seu e-mail?", atribuindo o resultado à
@@ -88,7 +87,29 @@
     Caso contrário, mostre um alerta com a mensagem:
         - "Não enviado."
     */
-    // ?
+    
+    $button.addEventListener( 'click', function( event ) {
+        
+        event.preventDefault();
+        if( !$inputUsername.value )
+            return alert( 'Preencha o nome de usuário!' );
+
+        if( !$inputEmail.value )
+            return alert( 'Preencha o email!' );
+
+        if( !isValidEmail( $inputEmail.value ) )
+            return alert( 'Entre com um e-mail válido!' );
+
+        if( !$message.value )
+            return alert( 'Preencha a mensagem!' );
+
+        if( !confirm( 'Tem certeza que deseja enviar o formulário?' ) )
+            return alert( 'Não enviado.' )
+            return alert( 'Enviado com sucesso!' );
+        
+
+
+    }, false );
 
     /*
     Crie uma função chamada `isValidEmail`, que será usada na validação do
@@ -116,6 +137,11 @@
         - "rita-marica@titica.a.b"
         - "agua_@evida.br.com"
     */
-    // ?
+    function isValidEmail( email ){
+        return /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/.test( email );
+    }
 
+   
 }) ( window, document );
+
+
