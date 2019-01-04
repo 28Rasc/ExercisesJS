@@ -1,0 +1,38 @@
+body{
+    box-sizing: border-box;
+}
+
+.container{
+    margin: 10%;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: 1fr;
+    grid-template-areas:
+    "timer play pause reset"
+    
+
+}
+
+.timer{
+    grid-area: timer;
+    text-align: center;
+
+
+
+    
+}
+
+.play{
+    grid-area: play;
+    
+}
+
+.pause{
+    grid-area: pause;
+    
+}
+
+.reset{
+    grid-area: reset;
+    
+}
